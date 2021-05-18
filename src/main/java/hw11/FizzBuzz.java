@@ -3,7 +3,7 @@ package hw11;
 import java.util.function.IntConsumer;
 
 public class FizzBuzz {
-    private int n;
+    private final int n;
     int num = 1; // FizzBuzz starts at 1.
     public FizzBuzz(int n) {
         this.n = n;
