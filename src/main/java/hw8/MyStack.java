@@ -28,7 +28,7 @@ public class MyStack<T> {
                 System.arraycopy(myStackArray, 0, newArray, 0, myStackArray.length);
                 myStackArray = newArray;
             }
-            myStackArray[myStackArray.length - 1 - size++] = value;
+            myStackArray[size++] = value;
         }
 
         public void remove(int index) {
@@ -53,13 +53,13 @@ public class MyStack<T> {
         }
 
         public T peek() {
-            return (T) myStackArray[0];
+            return (T) myStackArray[myStackArray.length-1];
         }
 
         public T pop() {
             Object[] newArray = new Object[myStackArray.length-1];
-            T firstElement = (T) myStackArray[0];
-            System.arraycopy(myStackArray, 1, newArray, 0, myStackArray.length-1);
+            T firstElement = (T) myStackArray[myStackArray.length-1];
+            System.arraycopy(myStackArray, 0, newArray, 0, myStackArray.length-1);
             myStackArray = newArray;
             size--;
             return firstElement;
@@ -89,6 +89,7 @@ public class MyStack<T> {
             System.out.println(myStack.getSize());
             System.out.println(myStack.get(1));
             System.out.println(myStack.peek());
+            System.out.println(myStack.pop());
             System.out.println(myStack.pop());
             System.out.println(myStack.pop());
         }
