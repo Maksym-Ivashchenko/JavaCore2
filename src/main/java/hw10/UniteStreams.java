@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class Unite {
+public class UniteStreams {
 
     public static <T> Stream<T> zip(Stream<T> first, Stream<T> second){
         List<T> firstList = first.collect(Collectors.toList());

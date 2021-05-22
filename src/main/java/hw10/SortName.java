@@ -18,6 +18,10 @@ public class SortName {
         names.add(new Person(9, "Victor"));
     }
 
+    public static List<Person> getNames() {
+        return names;
+    }
+
     public String printNamesOdd(List<Person> personList) {
         return personList.stream()
                 .filter(s -> s.getId() % 2 != 0)
@@ -31,44 +35,5 @@ public class SortName {
                 .map(s -> s.getName().toUpperCase())
                 .sorted(Collections.reverseOrder())
                 .collect(Collectors.joining(", "));
-    }
-
-    public static void main(String[] args) {
-    SortName sortName = new SortName();
-        System.out.println(sortName.printNamesOdd(names));
-        System.out.println(sortName.printNamesUpperCase(names));
-    }
-}
-class Person {
-    private Integer id;
-    private String name;
-
-    public Person(Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Person() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return id + ". " + name;
     }
 }
