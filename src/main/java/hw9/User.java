@@ -30,7 +30,7 @@ public class User {
 
 class GsonTest {
     public static void main(String[] args) {
-        try (FileReader fileUsers = new FileReader("src/main/java/hw9/resources/task2.txt")) {
+        try (FileReader fileUsers = new FileReader("src/main/resources/task2.txt")) {
             char[] buf = new char[256];
             int c;
             while ((c = fileUsers.read(buf)) > 0) {
@@ -48,7 +48,7 @@ class GsonTest {
                 String json = gson.toJson(users);
 
                 System.out.println(json);
-                try (FileWriter writeUsers = new FileWriter("src/main/java/hw9/resources/user.json")) {
+                try (FileWriter writeUsers = new FileWriter("src/main/resources/user.json")) {
                     writeUsers.write(json);
                     writeUsers.flush();
                 }

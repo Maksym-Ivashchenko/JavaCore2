@@ -5,16 +5,16 @@ import java.io.IOException;
 import java.util.*;
 
 public class WordsSorted {
-    public String toPrint(Map<Integer, String> map) {
+    public String toPrint(List sortList) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Map.Entry<Integer, String> count: map.entrySet())
-            stringBuilder.append(count.getKey()).append(" ").append(count.getValue()).append("\n");
+        for (Object count: sortList)
+            stringBuilder.append(count).append("\n");
         return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
         WordsSorted wordsSorted = new WordsSorted();
-        try (FileReader fileUsers = new FileReader("src/main/java/hw9/resources/words.txt")) {
+        try (FileReader fileUsers = new FileReader("src/main/resources/words.txt")) {
             char[] buf = new char[256];
             int c;
             while ((c = fileUsers.read(buf)) > 0) {
@@ -25,7 +25,6 @@ public class WordsSorted {
                 String[] strings = s.split("\\s+");
 
                 Map<String, Integer> sortedMap = new HashMap<>();
-                Map<Integer, String> sort = new TreeMap<>(Collections.reverseOrder());
 
                 for (String str: strings){
                     if (sortedMap.containsKey(str)) {
@@ -34,9 +33,9 @@ public class WordsSorted {
                         sortedMap.put(str, 1);
                     }
                 }
-                for (Map.Entry<String, Integer> value: sortedMap.entrySet())
-                    sort.put(value.getValue(), value.getKey());
-                System.out.println(wordsSorted.toPrint(sort));
+                List list = new ArrayList(sortedMap.entrySet());
+                Collections.sort(list, (Comparator<Map.Entry<String, Integer>>) (a, b) -> b.getValue() - a.getValue());
+                System.out.println(wordsSorted.toPrint(list));
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());

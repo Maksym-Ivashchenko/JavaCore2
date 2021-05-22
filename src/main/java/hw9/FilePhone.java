@@ -8,7 +8,7 @@ public class FilePhone {
     public static void main(String[] args) {
 
 //task_1
-        try (FileReader filePhone = new FileReader("src/main/java/hw9/resources/task1.txt")) {
+        try (FileReader filePhone = new FileReader("src/main/resources/task1.txt")) {
             char[] buf = new char[256];
             int c;
             while ((c = filePhone.read(buf)) > 0) {
