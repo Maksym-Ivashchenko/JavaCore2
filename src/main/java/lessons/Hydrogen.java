@@ -1,20 +1,22 @@
 package lessons;
 
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
 
-public class Hidrogen extends Thread{
-        Semaphore sem; // семафор. ограничивающий число философов
-        // кол-во приемов пищи
-        int num = 0;
-        // условный номер философа
-        String id = "H";
+public class Hydrogen extends Thread{
+    //private static final CyclicBarrier BARRIER = new CyclicBarrier(3);
+
+    Semaphore sem; // семафор. ограничивающий число философов
+        int num = 0; // кол-во приемов пищи
+        String id; // условный номер философа
         // в качестве параметров конструктора передаем идентификатор философа и семафор
-        Hidrogen(Semaphore sem)
+        Hydrogen(Semaphore sem, String id)
         {
             this.sem=sem;
-            //this.id=id;
+            this.id=id;
         }
-
+        @Override
         public void run()
         {
             try
@@ -27,8 +29,8 @@ public class Hidrogen extends Thread{
                     // философ ест
                     sleep(500);
                     num++;
-
-                    System.out.println (id);
+                    //BARRIER.await();
+                    System.out.print (id);
                     sem.release();
 
                     // философ гуляет

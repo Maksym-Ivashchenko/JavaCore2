@@ -8,7 +8,7 @@ public class WatterRelease {
 
     static final int COUNT = 12;
 
-    static final Lock lock = new ReentrantLock(true);
+    static final Lock lock = new ReentrantLock();
     static final Condition oxygenWait = lock.newCondition();
     static final Condition hydrogenWait = lock.newCondition();
 

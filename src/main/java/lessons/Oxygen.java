@@ -2,14 +2,14 @@ package lessons;
 
 import java.util.concurrent.Semaphore;
 
-public class Oxigen extends Thread {
+public class Oxygen extends Thread {
         Semaphore sem;
         int num = 0;
         String id = "O";
-        Oxigen(Semaphore sem)
+        Oxygen(Semaphore sem, String id)
         {
             this.sem=sem;
-            //this.id=id;
+            this.id=id;
         }
 
         public void run()

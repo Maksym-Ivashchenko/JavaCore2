@@ -1,8 +1,10 @@
 package lessons;
 
+import java.util.concurrent.CyclicBarrier;
+
 class Ferry {
-    /*
-    private static final CyclicBarrier BARRIER = new CyclicBarrier(3, new CreateWatter());
+
+    private static final CyclicBarrier BARRIER = new CyclicBarrier(3);
     //Инициализируем барьер на три потока и таском, который будет выполняться, когда
     //у барьера соберется три потока. После этого, они будут освобождены.
 
@@ -44,5 +46,5 @@ class Ferry {
             } catch (Exception e) {
             }
         }
-    }*/
+    }
 }

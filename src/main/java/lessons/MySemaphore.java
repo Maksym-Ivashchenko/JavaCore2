@@ -1,24 +1,17 @@
 package lessons;
 
+import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
 
 public class MySemaphore {
-
-    //public static void main(String[] args) {
-    // Semaphore semaphore = new Semaphore(1);
-    // new Thread(new IncrementThread("H", semaphore)).start();
-    // new Thread(new DecrementThread("O", semaphore)).start();
-    //}
-
-}
-class Program {
+    private static final CyclicBarrier BARRIER = new CyclicBarrier(3);
 
     public static void main(String[] args) {
         for (int i = 0; i < 10; i++) {
-            new Hidrogen(new Semaphore(2)).start();
-            new Oxigen(new Semaphore(1)).start();
+            new Hydrogen(new Semaphore(2), "H").start();
+            new Oxygen(new Semaphore(1), "O").start();
         }
     }
 }
-// класс философа
+
 
