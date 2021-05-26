@@ -2,44 +2,21 @@ package hw12;
 
 public class Main {
     public static void main(String[] args) {
-        WatterRelease watterRelease = new WatterRelease();
-        try {
-            Thread hydrogen1 = new Thread(() -> {
-                try {
-                    watterRelease.hydrogen(new Hydrogen("H"));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
-            Thread hydrogen2 = new Thread(() -> {
-                try {
-                    watterRelease.hydrogen(new Hydrogen("H"));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
-            Thread oxygen = new Thread(() -> {
-                try {
-                    watterRelease.oxygen(new Oxygen("O"));
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
+            String input = "HOOHOHHHHHOOHOHHHH";
 
-            //hydrogen1.setName("H");
-            //hydrogen2.setName("H");
-            //oxygen.setName("O");
-            for (int i = 0; i < 5; i++) {
-                hydrogen1.start();
-                hydrogen2.start();
-                oxygen.start();
+            Water h2o = new Water();
+            Runnable releaseHydrogen = () -> System.out.print("H");
+            Runnable releaseOxygen = () -> System.out.print("O");
+
+            Thread[] threadArray = new Thread[input.length()];
+            for (int i = 0; i < threadArray.length; i++) {
+                threadArray[i] = input.charAt(i) == 'H' ?
+                        new Hydrogen(releaseHydrogen, h2o) :
+                        new Oxygen(releaseOxygen, h2o);
             }
 
-
-
-        } catch (Exception e) {
-        }
-
+            for (int i = 0; i < threadArray.length; i++) {
+                threadArray[i].start();
+            }
     }
-
 }
