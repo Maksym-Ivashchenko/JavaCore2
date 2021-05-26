@@ -1,8 +1,8 @@
-package lessons;
+package hw12;
 
-import java.util.concurrent.Semaphore;
+import static java.lang.Thread.sleep;
 
-public class Oxygen extends Thread {
+public class Oxygen implements Runnable {
         //private static final Semaphore sem = new Semaphore(1);
         int num = 0;
         String id;

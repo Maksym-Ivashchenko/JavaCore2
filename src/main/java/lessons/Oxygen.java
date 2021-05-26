@@ -3,12 +3,12 @@ package lessons;
 import java.util.concurrent.Semaphore;
 
 public class Oxygen extends Thread {
-        Semaphore sem;
+        //private static final Semaphore sem = new Semaphore(1);
         int num = 0;
-        String id = "O";
-        Oxygen(Semaphore sem, String id)
+        String id;
+        Oxygen(String id)
         {
-            this.sem=sem;
+            //this.sem=sem;
             this.id=id;
         }
 
@@ -18,12 +18,12 @@ public class Oxygen extends Thread {
             {
                 while(num<1)
                 {
-                    sem.acquire();
+                    //sem.acquire();
                     //System.out.println (id);
                     sleep(500);
                     num++;
                     System.out.println (id);
-                    sem.release();
+                   // sem.release();
                     sleep(500);
                 }
             }

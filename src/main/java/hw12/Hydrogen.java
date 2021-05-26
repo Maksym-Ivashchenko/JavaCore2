@@ -1,10 +1,8 @@
-package lessons;
+package hw12;
 
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.Semaphore;
+import static java.lang.Thread.sleep;
 
-public class Hydrogen extends Thread{
+public class Hydrogen implements Runnable{
     //private static final CyclicBarrier BARRIER = new CyclicBarrier(3);
 
   //  private static final Semaphore sem = new Semaphore(2); // семафор. ограничивающий число философов
@@ -29,7 +27,7 @@ public class Hydrogen extends Thread{
                     sleep(500);
                     num++;
                     //BARRIER.await();
-                    System.out.print (id);
+                    System.out.println (id);
                   //  sem.release();
 
                     // философ гуляет

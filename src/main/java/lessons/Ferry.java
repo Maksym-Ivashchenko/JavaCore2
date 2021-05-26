@@ -4,13 +4,14 @@ import java.util.concurrent.CyclicBarrier;
 
 class Ferry {
 
-    private static final CyclicBarrier BARRIER = new CyclicBarrier(3);
+    private static final CyclicBarrier BARRIER = new CyclicBarrier(3, new FerryBoat());
     //Инициализируем барьер на три потока и таском, который будет выполняться, когда
     //у барьера соберется три потока. После этого, они будут освобождены.
 
     public static void main(String[] args) throws InterruptedException {
         for (int i = 0; i < 9; i++) {
-            new Thread(new Car(i)).start();
+            new Thread(new Car("H")).start();
+            new Thread(new Car("O")).start();
             Thread.sleep(400);
         }
     }
@@ -21,7 +22,7 @@ class Ferry {
         public void run() {
             try {
                 Thread.sleep(500);
-                System.out.println("Паром переправил автомобили!");
+                System.out.println();
             } catch (InterruptedException e) {
             }
         }
@@ -29,20 +30,20 @@ class Ferry {
 
     //Стороны, которые будут достигать барьера
     public static class Car implements Runnable {
-        private int carNumber;
+        private String carNumber;
 
-        public Car(int carNumber) {
+        public Car(String carNumber) {
             this.carNumber = carNumber;
         }
 
         @Override
         public void run() {
             try {
-                System.out.printf("Автомобиль №%d подъехал к паромной переправе.\n", carNumber);
+                //System.out.printf("Автомобиль №%d подъехал к паромной переправе.\n", carNumber);
                 //Для указания потоку о том что он достиг барьера, нужно вызвать метод await()
                 //После этого данный поток блокируется, и ждет пока остальные стороны достигнут барьера
                 BARRIER.await();
-                System.out.printf("Автомобиль №%d продолжил движение.\n", carNumber);
+                System.out.println(carNumber);
             } catch (Exception e) {
             }
         }
