@@ -15,8 +15,8 @@ public class Main {
                         new Oxygen(releaseOxygen, h2o);
             }
 
-            for (int i = 0; i < threadArray.length; i++) {
-                threadArray[i].start();
-            }
+        for (Thread thread : threadArray) {
+            thread.start();
+        }
     }
 }
